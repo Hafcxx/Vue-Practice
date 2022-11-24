@@ -29,3 +29,13 @@ const { createApp } = Vue
         }
     }
 }).mount('#app')
+
+const { createAppBoots } = Vue    
+    createApp({
+    data() {
+        return{
+            fondo: 'bg-warning',
+            color: false
+        }
+    }
+}).mount('#appBoots')
