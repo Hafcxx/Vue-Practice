@@ -7,7 +7,8 @@ const { createApp } = Vue
                 {nombre:'Manzana', cantidad: 10},
                 {nombre:'Pera', cantidad: 0 },
                 {nombre:'Platano', cantidad: 10} ],
-            nuevaFruta : ''
+            nuevaFruta : '',
+            Total: 0
         }
     },
     methods: {
@@ -16,6 +17,15 @@ const { createApp } = Vue
                 nombre: this.nuevaFruta, cantidad: 0
             });
             this.nuevaFruta = '';
+        }
+    },
+    computed: {
+        sumarFrutas(){
+            this.total = 0;
+            for (fruta of this.frutas){
+                this.total+= fruta.cantidad;
+            }
+            return this.total;
         }
     }
 }).mount('#app')
