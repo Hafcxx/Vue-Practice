@@ -28,7 +28,7 @@ const { createApp } = Vue
             return this.total;
         }
     }
-}).mount('#app')
+}).mount('#app');
 
 const { createAppBoots } = Vue    
     createApp({
@@ -38,4 +38,26 @@ const { createAppBoots } = Vue
             color: false
         }
     }
-}).mount('#appBoots')
+}).mount('#appBoots');
+
+const { createComp } = Vue    
+    createApp({
+    data() {
+        return{
+            mensaje: 'hola soy fuegoo',
+            contador: 0
+        }
+    },
+    computed: {
+        invertido(){
+            return this.mensaje.split('').reverse().join('');
+        },
+        color(){
+            return {
+                'bg-sucess' :this.contador <= 10,
+                'bg-warning' :this.contador >10 && this.contador<=20,
+                'bg-danger' : this.contador >20
+            }
+        }
+    }
+}).mount('#appComp')
