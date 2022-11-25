@@ -1,5 +1,5 @@
 const { createApp } = Vue    
-    createApp({
+createApp({
     data() {
         return {
             message: 'Hello Vue!',
@@ -29,9 +29,9 @@ const { createApp } = Vue
         }
     }
 }).mount('#app');
-
+/*
 const { createAppBoots } = Vue    
-    createApp({
+createAppBoots({
     data() {
         return{
             fondo: 'bg-warning',
@@ -41,7 +41,7 @@ const { createAppBoots } = Vue
 }).mount('#appBoots');
 
 const { createComp } = Vue    
-    createApp({
+createComp({
     data() {
         return{
             mensaje: 'hola soy fuegoo',
@@ -61,3 +61,41 @@ const { createComp } = Vue
         }
     }
 }).mount('#appComp')
+//la función de los ciclos de vida es para llamar eventos entre las cargas de vue
+const { createLife } = Vue    
+createApp({
+    data() {
+        return{
+            saludo: 'soy ciclo de vida de Vue'
+        }
+    },
+    beforeCreate(){
+        console.log("beforeCreate")
+    },
+    beforeUpdate(){
+        console.log("before update")
+    },
+    updated(){
+        console.log("updated")
+    },
+
+    //aparentemente en vue 3 el metodo destroy fue reemplazado por unounted
+    methods:{
+        destruir(){
+            this.$destroy();
+        }
+    }
+}).mount('#appLife')
+
+//Componentes 
+/*export default {
+    data() {
+      return {
+        count: 0
+      }
+    },
+    template: `
+      <button @click="count++">
+        You clicked me {{ count }} times.
+      </button>`
+}*/*/
