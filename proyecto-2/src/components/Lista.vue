@@ -1,15 +1,13 @@
 <template>
     <div>
-        <ul class="list-group">
-            <li v-for="(fruta, index) of frutas" :key="fruta.id"
-            class="list-group-item d-flex justify-content-between align-items-center">
-                {{fruta.nombre}}
-                <button class="btn float-center" @click="aumentar(index)">+</button>
-                <button class="btn float-center" @click="reducir(index)">-</button>
-                <span class="badge badge-primary badge-pill">{{fruta.cantidad}}</span>
-            </li>
-        </ul>
+        <h3>{{selector}}</h3>
         <button class="btn m-2" @click="reiniciar">Reiniciar</button>
+        <button class="btn m-2" @click="aumentar">+</button>
+        <button class="btn m-2" @click="reducir">-</button>
+        <button class="btn m-2" @click="guardar">agregar</button>
+        <hr>
+        <h1> Números Favoritos </h1>
+        <p>{{contador}}</p>
     </div>
 </template>
 
@@ -20,10 +18,10 @@ import { mapState, mapMutations } from 'vuex';
     export default{
         name: 'Lista',
         computed:{
-            ...mapState(['frutas'])
+            ...mapState(['frutas','contador','selector'])
         },
         methods: {
-            ...mapMutations(['aumentar', 'reducir','reiniciar'])
+            ...mapMutations(['aumentar', 'reducir','reiniciar','guardar'])
         }
     }
 </script>
