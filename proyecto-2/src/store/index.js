@@ -14,6 +14,9 @@ export default createStore({
     aumentar(state, index){
       state.frutas[index].cantidad ++
     },
+    reducir(state, index){
+      state.frutas[index].cantidad >0 ? state.frutas[index].cantidad -- : ""
+    },
     reiniciar(state){
       state.frutas.forEach(fruta =>{
         fruta.cantidad=0
