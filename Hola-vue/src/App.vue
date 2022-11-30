@@ -5,18 +5,19 @@ import TheWelcome from './components/TheWelcome.vue';
 
 import {ref} from "vue";
 
-const posts = ref([
-  {title: "Post 1", id: 1, body: "descripcion 1"},
-  {title: "Post 2", id: 2, body: "descripcion 2"},
-  {title: "Post 3", id: 3, body: "descripcion 3"},
-  {title: "Post 4", id: 4},
-])
+const posts = ref([]);
 
-const favorito = ref('')
+const favorito = ref("")
 
 const cambiarFavorito = (post) => {
   favorito.value = post;
 }
+
+fetch ('https://jsonplaceholder.typicode.com/posts')
+  .then(res => res.json())
+  .then(data => {
+    posts.value = data
+  });
 </script>
 
 
