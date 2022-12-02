@@ -8,7 +8,14 @@ import {ref} from "vue";
 
 
 const posts = ref([]);
+const postByPage = 10;
+const inicio = ref(0);
+const fin = ref(postByPage);
 
+const next = () => {
+    inicio.value = inicio.value + postByPage
+    fin.value = fin.value + postByPage
+}
 const favorito = ref("")
 
 const cambiarFavorito = (post) => {
@@ -28,7 +35,7 @@ fetch ('https://jsonplaceholder.typicode.com/posts')
   <HelloWorld msg="Hola Vue" />
   <h2>Mi post favorito: </h2>
   <Botones class ="mb-2"></Botones>
-  <Components v-for = "post in posts"
+  <Components v-for = "post in posts.slice(0, 3)"
     :key = "post.id"
     :title = "post.title"
     :id ="post.id"
