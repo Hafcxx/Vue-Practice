@@ -2,8 +2,10 @@
 import Components from './components/components.vue';
 import HelloWorld from './components/HelloWorld.vue';
 import TheWelcome from './components/TheWelcome.vue';
+import Botones from './components/botones.vue';
 
 import {ref} from "vue";
+
 
 const posts = ref([]);
 
@@ -25,6 +27,7 @@ fetch ('https://jsonplaceholder.typicode.com/posts')
 <div class="wrapper">
   <HelloWorld msg="Hola Vue" />
   <h2>Mi post favorito: </h2>
+  <Botones class ="mb-2"></Botones>
   <Components v-for = "post in posts"
     :key = "post.id"
     :title = "post.title"
