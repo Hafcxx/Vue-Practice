@@ -35,7 +35,10 @@ fetch ('https://jsonplaceholder.typicode.com/posts')
   <HelloWorld msg="Hola Vue" />
   <h2>Mi post favorito: </h2>
   <Botones class ="mb-2"></Botones>
-  <Components v-for = "post in posts.slice(0, 3)"
+
+  <button @click="next">Next provisorio</button>
+
+  <Components v-for = "post in posts.slice(inicio, fin)"
     :key = "post.id"
     :title = "post.title"
     :id ="post.id"
