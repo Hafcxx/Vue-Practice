@@ -2,16 +2,19 @@
 import axios from 'axios';
 import {ref } from "vue";
 import {useRoute, useRouter} from 'vue-router';
+import {useGetData} from '@/composables/getData';
 
 const route = useRoute();
 const router = useRouter();
 
+const {data, loading, getData} = useGetData();
 const poke = ref({});
 
 //Probando router (hook router), empujamos al usuario a una ruta
 const back = () => {
     router.push ('/pokemons')
 }
+/*
 
 const getData = async () =>{
     try {
@@ -22,12 +25,13 @@ const getData = async () =>{
         poke.value = null;
     }
 }
+*/
 
-getData();
+getData(`https://pokeapi.co/api/v2/pokemon/${route.params.name}`);
 </script>
 <template>
-    <div v-if="poke">
-        <img :src="poke.sprites?.front_default" alt="imagen pokemon" />
+    <div v-if="data">
+        <img :src="data.sprites?.front_default" alt="imagen pokemon" />
         <h1>Poke name: {{ $route.params.name }}</h1>
     </div>
     <h1 v-else>No existe el pokemon</h1>
